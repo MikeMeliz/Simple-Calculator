@@ -41,7 +41,7 @@ public class Calc extends JFrame implements ActionListener{
         b9 = new JButton("9");
         b9.addActionListener(this);
         
-        // Operators
+        // Operator
         bAdd=new JButton("+");
         bAdd.addActionListener(new ActionListener(){        // New ActionListener 
             @Override
@@ -121,7 +121,6 @@ public class Calc extends JFrame implements ActionListener{
             }
         });
         
-        // Add the Buttons
         buttonPanel.add(b7);
         buttonPanel.add(b8);
         buttonPanel.add(b9);
@@ -143,8 +142,8 @@ public class Calc extends JFrame implements ActionListener{
         pack();
     }
 
-    public static void main(String[] args) {                // Main Class
-        new Calc().setVisible(true);                        // Make it visible
+    public static void main(String[] args) {
+        new Calc().setVisible(true);
     }
 
     @Override

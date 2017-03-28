@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
 
 public class Calc extends JFrame implements ActionListener{
 
@@ -42,15 +41,15 @@ public class Calc extends JFrame implements ActionListener{
         b9 = new JButton("9");
         b9.addActionListener(this);
         
-        // Telestes
+        // Operators
         bAdd=new JButton("+");
         bAdd.addActionListener(new ActionListener(){        // New ActionListener 
             @Override
             public void actionPerformed(ActionEvent e) {    
-                tv = Integer.parseInt(results.getText());   // Apothikeuoume prwto arithmo
-                results.setText("0");                       // Midenizoume to Textfield
-                JButton bAdd=(JButton) e.getSource();       // Pairnoume ton telesti
-                bv2=String.valueOf(bAdd.getText());         // Apothikeuoume telesti
+                tv = Integer.parseInt(results.getText());   // Save first number
+                results.setText("0");                       // Clear TextField
+                JButton bAdd=(JButton) e.getSource();       // Take Operator
+                bv2=String.valueOf(bAdd.getText());         // Save Operator
             }
         });
         
@@ -58,10 +57,10 @@ public class Calc extends JFrame implements ActionListener{
         bSub.addActionListener(new ActionListener(){        // New ActionListener 
             @Override
             public void actionPerformed(ActionEvent e) {
-                tv = Integer.parseInt(results.getText());   // Apothikeuoume prwto arithmo
-                results.setText("0");                       // Midenizoume to Textfield
-                JButton bSub=(JButton) e.getSource();       // Pairnoume ton telesti
-                bv2=String.valueOf(bSub.getText());         // Apothikeuoume telesti
+                tv = Integer.parseInt(results.getText());   // Save first number
+                results.setText("0");                       // Clear TextField
+                JButton bSub=(JButton) e.getSource();       // Take Operator
+                bv2=String.valueOf(bSub.getText());         // Save Operator
             }
         });
         
@@ -69,10 +68,10 @@ public class Calc extends JFrame implements ActionListener{
         bMult.addActionListener(new ActionListener(){       // New ActionListener 
             @Override
             public void actionPerformed(ActionEvent e) {
-                tv = Integer.parseInt(results.getText());   // Apothikeuoume prwto arithmo
-                results.setText("0");                       // Midenizoume to Textfield
-                JButton bMult=(JButton) e.getSource();      // Pairnoume ton telesti
-                bv2=String.valueOf(bMult.getText());        // Apothikeuoume telesti
+                tv = Integer.parseInt(results.getText());   // Save first number
+                results.setText("0");                       // Clear Textfield
+                JButton bMult=(JButton) e.getSource();      // Take Operator
+                bv2=String.valueOf(bMult.getText());        // Save Operator
             }
         });
         
@@ -80,10 +79,10 @@ public class Calc extends JFrame implements ActionListener{
         bDiv.addActionListener(new ActionListener(){        // New ActionListener 
             @Override
             public void actionPerformed(ActionEvent e) {
-                tv = Integer.parseInt(results.getText());   // Apothikeuoume prwto arithmo
-                results.setText("0");                       // Midenizoume to Textfield
-                JButton bDiv=(JButton) e.getSource();       // Pairnoume ton telesti
-                bv2=String.valueOf(bDiv.getText());         // Apothikeuoume telesti
+                tv = Integer.parseInt(results.getText());   // Save first number
+                results.setText("0");                       // Clear Textfield
+                JButton bDiv=(JButton) e.getSource();       // Take Operator
+                bv2=String.valueOf(bDiv.getText());         // Save Operator
             }
         });
         
@@ -91,9 +90,9 @@ public class Calc extends JFrame implements ActionListener{
         bDec.addActionListener(new ActionListener(){        // New ActionListener 
             @Override
             public void actionPerformed(ActionEvent e) {
-                results.setText("0");                       // Midenizoume to Textfield
-                tv = 0;                                     // Midenizoume prwto arithmo
-                bv2 = "0";                                  // Midenizoume ton telesti
+                results.setText("0");                       // Clear Textfield
+                tv = 0;                                     // Clear First Number
+                bv2 = "0";                                  // Clear Operator
             }
         });
         
@@ -101,28 +100,28 @@ public class Calc extends JFrame implements ActionListener{
         bEq.addActionListener(new ActionListener(){             // New ActionListener 
             @Override
             public void actionPerformed(ActionEvent e) {
-                int tv2 = Integer.parseInt(results.getText());  // Apothikeuoume deutero arithmo
-                if (bv2 == "+") {                               // Telestis +
-                    tv += tv2;                                  // Prosthesi
-                    results.setText(String.valueOf(tv));        // Emfanisi Apotelesmatos
-                } else if (bv2 == "-") {                        // Telestis -
-                    tv -= tv2;                                  // Afairesi
-                    results.setText(String.valueOf(tv));        // Emfanisi Apotelesmatos
-                } else if (bv2 == "*") {                        // Telestis *
-                    tv *= tv2;                                  // Pollaplasiasmos
-                    results.setText(String.valueOf(tv));        // Emfanisi Apotelesmatos
-                } else if (bv2 == "/") {                        // Diairesi
-                    if (tv2 == 0) {                             // Elegxos gia 0 ston paranomasti
-                        results.setText("Error");               // Emfanisi ERROR 
+                int tv2 = Integer.parseInt(results.getText());  // Save Second Number
+                if (bv2 == "+") {                               // Operator +
+                    tv += tv2;                                  // Sum
+                    results.setText(String.valueOf(tv));        // Show result
+                } else if (bv2 == "-") {                        // Operator -
+                    tv -= tv2;                                  // Substraction
+                    results.setText(String.valueOf(tv));        // Show Result
+                } else if (bv2 == "*") {                        // Operator *
+                    tv *= tv2;                                  // Multiply
+                    results.setText(String.valueOf(tv));        // Show Result
+                } else if (bv2 == "/") {                        // Division
+                    if (tv2 == 0) {                             // Check for 0
+                        results.setText("Error");               // Show ERROR 
                     } else {                
-                        tv /= tv2;                              // Diairesi
-                        results.setText(String.valueOf(tv));    // Emfanisi Apotelesmatos
+                        tv /= tv2;                              // Division
+                        results.setText(String.valueOf(tv));    // Show result
                     }
                 }
             }
         });
         
-        // Prosthetoume ta Koumpia
+        // Add the Buttons
         buttonPanel.add(b7);
         buttonPanel.add(b8);
         buttonPanel.add(b9);
@@ -145,24 +144,24 @@ public class Calc extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {                // Main Class
-        new Calc().setVisible(true);                        // To kanoume Orato
+        new Calc().setVisible(true);                        // Make it visible
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String lez=results.getText();                       // Lezanta = Text Field
         int val=Integer.valueOf(lez);                       // Value = Lezanta = Integer Text Field
-        JButton b=(JButton) e.getSource();                  // Pairnoume timi apo to JButton
-        int bv=Integer.valueOf(b.getText());                // ButtonValue = Akeraios B = timi JButton
-        val=val*10+bv;                                      // Kanoume to textfield * 10 kai prosthetoume ton ButtonValue
-        lez=String.valueOf(val);                            // Lezanta = String Timi Value
-        results.setText(lez);                               // Tupwnoume th Lezanta
+        JButton b=(JButton) e.getSource();                  // Take number from JButton
+        int bv=Integer.valueOf(b.getText());                // ButtonValue = Integer B = Value JButton
+        val=val*10+bv;                                      // textfield * 10 + ButtonValue
+        lez=String.valueOf(val);                            // Lezanta = String Value
+        results.setText(lez);                               // Print Lezanta
     }
     
     private JPanel buttonPanel, calcPanel;                  // ButtonPanel, Calculator Panel
-    private JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9; // Buttons Arithmwn
-    private JButton bAdd, bSub, bMult, bDiv, bDec, bEq;     // Buttons Telestwn
-    private JTextField results;                             // Apotelesmata Text Field
+    private JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9; // Buttons Numbers
+    private JButton bAdd, bSub, bMult, bDiv, bDec, bEq;     // Buttons Operators
+    private JTextField results;                             // Results Text Field
     public String bv2;                                      // Button Value
     public Integer tv;                                      // TextField Value
     
